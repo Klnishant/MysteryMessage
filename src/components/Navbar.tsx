@@ -28,19 +28,7 @@ function Navbar(){
                             <span className="mr-4">
                                 Welcome {user.username || user.email}
                             </span>
-                            { dashboard ? (
-                                <Link href='/dashboard'>
-                                    <Button onClick={()=>{setDashboard(false)}} className="w-full md:w-auto bg-slate-100 text-black" variant='outline'>
-                                        DashBoard
-                                    </Button>
-                                </Link>
-                            ) : (
-                                <Link href='/'>
-                                    <Button onClick={()=>{setDashboard(true)}} className="w-full md:w-auto bg-slate-100 text-black" variant='outline'>
-                                        Home
-                                    </Button>
-                                </Link>
-                            )}
+                            
                             <Button onClick={()=>{
                                 signOut();
                                 router.replace('/');

@@ -13,8 +13,16 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const {data: session} = useSession();
+  const router = useRouter();
+
+  if (session) {
+    return router.replace('/dashboard');
+  }
   return (
     <>
       <main className="flex-grow flex flex-col items-center justify-center px-4 md:px-24 py-12 bg-gray-800 text-white">

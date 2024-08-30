@@ -16,6 +16,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, RefreshCcw } from "lucide-react";
 import MessageCard from "@/components/MessageCard";
 import { useRouter } from "next/navigation";
+import { json } from "stream/consumers";
 
 function UserDashboard(){
     const [messages,setMessage] = useState<Message[]>([]);
@@ -120,7 +121,9 @@ function UserDashboard(){
     }
 
     if (!session || !session.user) {
-        return router.replace('/');
+        return (
+            router.replace('/')
+        )
     }
 
     const {username} = session?.user as User;
