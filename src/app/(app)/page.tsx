@@ -20,6 +20,8 @@ export default function Home() {
   const {data: session} = useSession();
   const router = useRouter();
 
+  const date = new Date().getFullYear();
+
   if (session) {
     return router.replace('/dashboard');
   }
@@ -65,7 +67,8 @@ export default function Home() {
         </Carousel>
       </main>
       <footer className="text-center p-4 md:p-6 bg-gray-900 text-white">
-        © 2024 True Feedback. All rights reserved.
+        <p>© {date} True Feedback. All rights reserved.</p>
+        <p>Created With ❤️ By Nishant Kaushal</p>
       </footer>
     </>
   );
