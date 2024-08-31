@@ -41,8 +41,6 @@ export default function Reviewer(){
 
     const params = useParams<{username: string}>();
     const username = params.username;
-
-    console.log(username);
     
     const messageContent = form.watch('content');
     const handleMessageClick = (message: string) => {
@@ -58,9 +56,6 @@ export default function Reviewer(){
                 username,
                 content: data.content,
             });
-
-            console.log(response);
-            
 
             toast(
                 {
@@ -99,7 +94,6 @@ export default function Reviewer(){
         try {
             complete('');
           } catch (error) {
-            console.error('Error fetching messages:', error);
             
             const axiosError = error as AxiosError<apiResponse>;
 

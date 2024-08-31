@@ -19,12 +19,8 @@ export async function POST(req: Request) {
       stream: true,
       prompt,
     });
-
-    console.log(response);
     
-
     const stream = OpenAIStream(response);
-    
     
     return new StreamingTextResponse(stream);
   } catch (error) {

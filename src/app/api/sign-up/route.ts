@@ -9,16 +9,10 @@ export async function POST(request: Request) {
     try {
         const {username,email,password} = await request.json();
 
-        console.log(username,email,password);
-        
-
         const existingVerifiedUserByUsername = await UserModel.findOne({
             username,
             isverified: true
         });
-
-        console.log(existingVerifiedUserByUsername);
-        
 
         if (existingVerifiedUserByUsername) {
             return Response.json({
@@ -31,11 +25,19 @@ export async function POST(request: Request) {
         }
 
         const existingUserByEmail = await UserModel.findOne({email});
-        console.log(existingUserByEmail);
+        
+        const existingUserByUsername = await UserModel.find({
+            username,
+            isverified:false,
+        });
+
+        if (existingUserByUsername) {
+            await UserModel.deleteMany({
+               username
+            }).exec();
+       }
         
         let verifyCode = Math.floor(100000 + Math.random() * 900000).toString();
-        console.log(verifyCode);
-        
 
         if (existingUserByEmail) {
             if (existingUserByEmail?.isverified) {
@@ -47,13 +49,18 @@ export async function POST(request: Request) {
                 status:400
             });
             }
-    
+
             else{
+
+                if (existingUserByEmail.username != username) {
+                    existingUserByEmail.username = username;
+                }
+        
                 const hashPassword = (await bcrypt.hash(password,10)).toString();
                 existingUserByEmail.password = hashPassword;
                 existingUserByEmail.verifyCode = verifyCode;
                 existingUserByEmail.verifyCodeExpiry = new Date(Date.now() + 3600000)
-                existingUserByEmail?.save()
+                existingUserByEmail?.save();
             }
         }
 
@@ -73,8 +80,6 @@ export async function POST(request: Request) {
                 messages: [],
             });
             
-            console.log(newUser);
-            
             await newUser.save();
         }
 
@@ -85,9 +90,6 @@ export async function POST(request: Request) {
             username,
             verifyCode
         );
-            console.log(username,email,verifyCode);
-            console.log(emailResponse.message);
-            console.log(emailResponse);
             
         if(!emailResponse.success){
             return (Response.json({
