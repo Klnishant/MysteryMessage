@@ -49,7 +49,7 @@ Before you begin, ensure you have the following installed on your local machine:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/truefeedback.git
+   git clone https://github.com/Klnishant/MysteryMessage.git
    cd truefeedback
 
 2. **Install dependencies:**
