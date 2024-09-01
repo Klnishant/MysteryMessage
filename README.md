@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TrueFeedback Web App
+
+## Overview
+
+**TrueFeedback** is a web application that allows users to receive feedback anonymously. The app is built using [Next.js](https://nextjs.org/), a React framework for production, and [MongoDB](https://www.mongodb.com/), a NoSQL database. It incorporates [Nodemailer](https://nodemailer.com/about/) for sending verification codes via email during the signup process.
+
+## Features
+
+- **Anonymous Feedback:** Users can receive feedback anonymously, ensuring privacy and honest communication.
+- **Email Verification:** Ensures the authenticity of users by sending verification codes during the signup process.
+- **MongoDB Integration:** The app uses MongoDB as the database for storing user data and feedback.
+- **Next.js Framework:** Built with Next.js, providing server-side rendering and optimized performance.
+- **Responsive Design:** The app is fully responsive, making it accessible on both desktop and mobile devices.
+- **OpenAI ChatGPT Integration:** Leverage the power of AI to suggest messages, providing users with options for feedback or responses.
+
+## Technologies Used
+
+- **Frontend:**
+  - Next.js
+  - React
+  - CSS (Tailwind CSS/Styled-Components)
+  
+- **Backend:**
+  - Node.js
+  - MongoDB
+  - Mongoose (ODM for MongoDB)
+  - Nodemailer (Email Service)
+
+- **AI Integration:**
+  - OpenAI ChatGPT (for suggesting message content)
+
+- **Deployment:**
+  - Vercel
+  - MongoDB Atlas (for MongoDB deployment)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Before you begin, ensure you have the following installed on your local machine:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Node.js** (v14.x or later)
+- **npm** (v6.x or later) or **Yarn** (v1.x or later)
+- **MongoDB** (Local installation or access to MongoDB Atlas)
+- **Git** (for version control)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. **Clone the repository:**
 
-## Learn More
+   ```bash
+   git clone https://github.com/yourusername/truefeedback.git
+   cd truefeedback
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Set up environment variables:**
+Create a `.env` file in the root directory and add the following environment variables:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    ```bash
+    MONGODB_URI = 
+    RESEND_API_KEY = 
+    NEXT_AUTH_SECRET = 
+    OPENAI_API_KEY = 
+    MAIL_USER = 
+    Mail_PASS_KEY = 
 
-## Deploy on Vercel
+4. **Run the development server:**
+    ```bash
+    npm run dev
+    # or
+    yarn dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Open http://localhost:3000 with your browser to see the result.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Usage
+
+1. **Sign Up:**
+- Users can sign up with their email address.
+- A verification code will be sent to the  user's email to verify the account.
+
+2. **Log In:**
+- After verification, users can log in to the application using their credentials.
+
+3. **Receiving Feedback:**
+- Once logged in, users can share a link with others to receive anonymous feedback.
+
+4. **Viewing Feedback:**
+- Feedback received can be viewed in the user's dashboard.
+
+5. **Using ChatGPT for Suggested Messages:**
+- Users can click on the "Suggest Message" button when composing feedback.
+- ChatGPT will generate and suggest appropriate messages or responses.
+- Users can modify or directly use these suggestions.
+
+## License
+This project is licensed under the MIT License. See the [LICENSE]() file for details.
